@@ -1,0 +1,1 @@
+update personal set nombre='Nazar' WHERE id=1;

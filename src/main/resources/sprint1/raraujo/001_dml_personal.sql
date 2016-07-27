@@ -1,0 +1,1 @@
+INSERT INTO personal VALUES (1, 'Nazariy', 'Doan');

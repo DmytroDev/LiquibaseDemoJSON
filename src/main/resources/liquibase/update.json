@@ -1,0 +1,129 @@
+{
+  "databaseChangeLog": [
+    {
+      "preConditions": [
+        {
+          "runningAs": {
+            "username": "root"
+          }
+        }
+      ]
+    },
+    {
+      "changeSet": {
+        "id": "1",
+        "author": "dima",
+        "changes": [
+          {
+            "createTable": {
+              "tableName": "person",
+              "columns": [
+                {
+                  "column": {
+                    "name": "id",
+                    "type": "int",
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "nullable": false
+                    },
+                  }
+                },
+                {
+                  "column": {
+                    "name": "firstname",
+                    "type": "varchar(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "lastname",
+                    "type": "varchar(50)",
+                    "constraints": {
+                      "nullable": false
+                    },
+                  }
+                },
+                {
+                  "column": {
+                    "name": "state",
+                    "type": "char(2)"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2",
+        "author": "dima",
+        "changes": [
+          {
+            "addColumn": {
+              "tableName": "person",
+              "columns": [
+                {
+                  "column": {
+                    "name": "username",
+                    "type": "varchar(8)"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "3",
+        "author": "dima",
+        "changes": [
+          {
+            "addLookupTable": {
+              "tableName": "person",
+              "existingTableName": "person",
+              "existingColumnName":"state",
+              "newTableName": "state",
+              "newColumnName": "id",
+              "newColumnDataType": "char(2)",
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "4",
+        "author": "dima",
+        "changes": [
+          {
+            "includeSQL-file": {
+              "include": {
+                "file": "src/main/resources/sprint1/itristan/001_ddl_personal.sql"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "sqlFile-example-2",
+        "author": "dima",
+        "changes": [
+          {
+            "sqlFile": {
+              "encoding": "utf8",
+              "path": "src/main/resources/sprint1/itristan/001_ddl_personal.sql",
+              "splitStatements": true,
+              "stripComments": true
+            }
+          }]
+      }
+    }
+  ]
+}
